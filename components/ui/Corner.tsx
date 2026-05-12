@@ -12,7 +12,7 @@ function CornerImpl({ className = "" }: CornerProps) {
   return (
     <div
       aria-hidden="true"
-      className={`absolute w-[3px] h-[3px] bg-current z-10 ${className}`}
+      className={`absolute w-[3px] h-[3px] bg-black z-20 ${className}`}
     />
   );
 }

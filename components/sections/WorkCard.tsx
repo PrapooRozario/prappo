@@ -15,25 +15,25 @@ function WorkCardImpl({ project }: WorkCardProps) {
       className="group relative flex flex-col w-full h-[480px] md:h-[560px] border border-black/20 bg-white cursor-pointer overflow-hidden text-black"
     >
       {/* Top Outer Corners */}
-      <Corner className="top-[-1.5px] left-[-1.5px]" />
-      <Corner className="top-[-1.5px] right-[-1.5px]" />
+      <Corner className="-top-[1.5px] -left-[1.5px]" />
+      <Corner className="-top-[1.5px] -right-[1.5px]" />
 
       {/* Top Meta Bar */}
       <div className="relative grid grid-cols-[auto_1fr_auto] h-[48px] border-b border-black/20 bg-white z-20">
         <div className="relative px-5 md:px-6 flex items-center border-r border-black/20 font-mono text-[11px] md:text-[12px] text-black/50 tracking-widest">
           {number}
-          <Corner className="bottom-[-1.5px] right-[-1.5px]" />
+          <Corner className="-bottom-[1.5px] -right-[1.5px]" />
         </div>
         <div className="relative px-5 md:px-6 flex items-center font-mono text-[11px] md:text-[12px] text-black/50 uppercase tracking-widest">
           {category}
         </div>
         <div className="relative px-5 md:px-6 flex items-center border-l border-black/20 font-mono text-[11px] md:text-[12px] text-black/50 tracking-widest">
           {year}
-          <Corner className="bottom-[-1.5px] left-[-1.5px]" />
+          <Corner className="-bottom-[1.5px] -left-[1.5px]" />
         </div>
 
-        <Corner className="bottom-[-1.5px] left-[-1.5px]" />
-        <Corner className="bottom-[-1.5px] right-[-1.5px]" />
+        <Corner className="-bottom-[1.5px] -left-[1.5px]" />
+        <Corner className="-bottom-[1.5px] -right-[1.5px]" />
       </div>
 
       {/* Main Visual Area */}
@@ -67,10 +67,10 @@ function WorkCardImpl({ project }: WorkCardProps) {
 
       {/* Bottom Title Area */}
       <div className="relative border-t border-black/20 bg-white group-hover:bg-black text-black group-hover:text-white transition-colors duration-500 z-20">
-        <Corner className="top-[-1.5px] left-[-1.5px]" />
-        <Corner className="top-[-1.5px] right-[-1.5px]" />
-        <Corner className="bottom-[-1.5px] left-[-1.5px]" />
-        <Corner className="bottom-[-1.5px] right-[-1.5px]" />
+        <Corner className="-top-[1.5px] -left-[1.5px]" />
+        <Corner className="-top-[1.5px] -right-[1.5px]" />
+        <Corner className="-bottom-[1.5px] -left-[1.5px]" />
+        <Corner className="-bottom-[1.5px] -right-[1.5px]" />
 
         <div className="p-6 md:p-8 flex items-end justify-between">
           <div className="flex flex-col">

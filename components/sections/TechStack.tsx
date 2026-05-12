@@ -23,9 +23,9 @@ export default function TechStack() {
       </div>
 
       {/* Main Table Container */}
-      <div className="relative  border-black/20  bg-white">
-        <Corner className="top-[-1.5px] left-[-1.5px]" />
-        <Corner className="top-[-1.5px] right-[-1.5px]" />
+      <div className="relative border border-black/20 border-b-0 bg-white">
+        <Corner className="-top-[1.5px] -left-[1.5px]" />
+        <Corner className="-top-[1.5px] -right-[1.5px]" />
 
         {techCategories.map((category) => (
           <div
@@ -72,8 +72,8 @@ export default function TechStack() {
           </div>
         ))}
 
-        <Corner className="bottom-[-1.5px] left-[-1.5px]" />
-        <Corner className="bottom-[-1.5px] right-[-1.5px]" />
+        <Corner className="-bottom-[1.5px] -left-[1.5px]" />
+        <Corner className="-bottom-[1.5px] -right-[1.5px]" />
       </div>
     </section>
   );

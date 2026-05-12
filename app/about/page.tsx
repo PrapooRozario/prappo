@@ -1,5 +1,6 @@
 ﻿import { Corner } from "@/components/ui";
 import { CertRow } from "@/components/ui/CertRow";
+import { LocationMap } from "@/components/ui/LocationMap";
 import Image from "next/image";
 
 export const metadata = {
@@ -15,10 +16,10 @@ export default function AboutPage() {
         
         {/* Block 1: Hero Text (Spans 2 cols) */}
         <div className="md:col-span-2 relative border border-black/20 bg-white p-8 md:p-12 flex flex-col justify-between min-h-[400px] md:min-h-[480px]">
-          <Corner className="top-[-1.5px] left-[-1.5px]" />
-          <Corner className="top-[-1.5px] right-[-1.5px]" />
-          <Corner className="bottom-[-1.5px] left-[-1.5px]" />
-          <Corner className="bottom-[-1.5px] right-[-1.5px]" />
+          <Corner className="-top-[1.5px] -left-[1.5px]" />
+          <Corner className="-top-[1.5px] -right-[1.5px]" />
+          <Corner className="-bottom-[1.5px] -left-[1.5px]" />
+          <Corner className="-bottom-[1.5px] -right-[1.5px]" />
           
           <div className="font-mono text-[11px] md:text-[13px] uppercase tracking-widest text-black/50 mb-8">
             / Introduction
@@ -34,10 +35,10 @@ export default function AboutPage() {
 
         {/* Block 2: Image */}
         <div className="relative border border-black/20 bg-white p-2 min-h-[400px] md:min-h-full">
-          <Corner className="top-[-1.5px] left-[-1.5px]" />
-          <Corner className="top-[-1.5px] right-[-1.5px]" />
-          <Corner className="bottom-[-1.5px] left-[-1.5px]" />
-          <Corner className="bottom-[-1.5px] right-[-1.5px]" />
+          <Corner className="-top-[1.5px] -left-[1.5px]" />
+          <Corner className="-top-[1.5px] -right-[1.5px]" />
+          <Corner className="-bottom-[1.5px] -left-[1.5px]" />
+          <Corner className="-bottom-[1.5px] -right-[1.5px]" />
           
           <div className="relative w-full h-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 bg-black/5">
             <Image
@@ -53,22 +54,14 @@ export default function AboutPage() {
 
         {/* Block 3: Location/Status */}
         <div className="relative border border-black/20 bg-white flex flex-col justify-between group overflow-hidden min-h-[400px]">
-          <Corner className="top-[-1.5px] left-[-1.5px] z-20" />
-          <Corner className="top-[-1.5px] right-[-1.5px] z-20" />
-          <Corner className="bottom-[-1.5px] left-[-1.5px] z-20" />
-          <Corner className="bottom-[-1.5px] right-[-1.5px] z-20" />
+          <Corner className="-top-[1.5px] -left-[1.5px] z-20" />
+          <Corner className="-top-[1.5px] -right-[1.5px] z-20" />
+          <Corner className="-bottom-[1.5px] -left-[1.5px] z-20" />
+          <Corner className="-bottom-[1.5px] -right-[1.5px] z-20" />
           
           {/* Map Background */}
-          <div className="absolute inset-0 z-0 pointer-events-none grayscale opacity-30 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 ease-in-out">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d116833.9730352447!2d90.33728817342617!3d23.78088745700778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b087026b81%3A0x8fa563bbdd5904c2!2sDhaka!5e0!3m2!1sen!2sbd!4v1715424564756!5m2!1sen!2sbd"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen={false}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
+          <div className="absolute inset-0 z-0 pointer-events-none opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000 ease-in-out">
+            <LocationMap lat={23.7806} lng={90.4193} zoom={12} label="Dhaka, Bangladesh" />
           </div>
           
           {/* Content Overlay */}
@@ -92,10 +85,10 @@ export default function AboutPage() {
 
         {/* Block 4: Philosophy */}
         <div className="relative border border-black/20 p-8 md:p-10 flex flex-col justify-between">
-          <Corner className="top-[-1.5px] left-[-1.5px]" />
-          <Corner className="top-[-1.5px] right-[-1.5px]" />
-          <Corner className="bottom-[-1.5px] left-[-1.5px]" />
-          <Corner className="bottom-[-1.5px] right-[-1.5px]" />
+          <Corner className="-top-[1.5px] -left-[1.5px]" />
+          <Corner className="-top-[1.5px] -right-[1.5px]" />
+          <Corner className="-bottom-[1.5px] -left-[1.5px]" />
+          <Corner className="-bottom-[1.5px] -right-[1.5px]" />
           
           <div className="font-mono text-[11px] md:text-[13px] uppercase tracking-widest text-black/50  mb-12">
             / Philosophy
@@ -108,10 +101,10 @@ export default function AboutPage() {
 
         {/* Block 5: Expertise */}
         <div className="relative border border-black/20 bg-white p-8 md:p-10">
-          <Corner className="top-[-1.5px] left-[-1.5px]" />
-          <Corner className="top-[-1.5px] right-[-1.5px]" />
-          <Corner className="bottom-[-1.5px] left-[-1.5px]" />
-          <Corner className="bottom-[-1.5px] right-[-1.5px]" />
+          <Corner className="-top-[1.5px] -left-[1.5px]" />
+          <Corner className="-top-[1.5px] -right-[1.5px]" />
+          <Corner className="-bottom-[1.5px] -left-[1.5px]" />
+          <Corner className="-bottom-[1.5px] -right-[1.5px]" />
           
           <div className="font-mono text-[11px] md:text-[13px] uppercase tracking-widest text-black/50 mb-8 md:mb-12">
             / Expertise
@@ -152,10 +145,10 @@ export default function AboutPage() {
         <div className="md:col-span-3 relative border border-black/20 bg-white"
           aria-labelledby="certificates-heading"
         >
-          <Corner className="top-[-1.5px] left-[-1.5px]" />
-          <Corner className="top-[-1.5px] right-[-1.5px]" />
-          <Corner className="bottom-[-1.5px] left-[-1.5px]" />
-          <Corner className="bottom-[-1.5px] right-[-1.5px]" />
+          <Corner className="-top-[1.5px] -left-[1.5px]" />
+          <Corner className="-top-[1.5px] -right-[1.5px]" />
+          <Corner className="-bottom-[1.5px] -left-[1.5px]" />
+          <Corner className="-bottom-[1.5px] -right-[1.5px]" />
           
           
           <div className="flex flex-col [&>*:first-child]:border-t-0">

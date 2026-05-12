@@ -48,18 +48,18 @@ export default function Nav() {
           className={`relative w-full hidden md:grid md:grid-cols-3 border ${themeBorder} font-sans bg-transparent text-[28px] transition-colors duration-300 h-[56px]`}
         >
           {/* 4 Outer Corners */}
-          <Corner className={`top-[-1.5px] left-[-1.5px] ${themeText}`} />
-          <Corner className={`top-[-1.5px] right-[-1.5px] ${themeText}`} />
-          <Corner className={`bottom-[-1.5px] left-[-1.5px] ${themeText}`} />
-          <Corner className={`bottom-[-1.5px] right-[-1.5px] ${themeText}`} />
+          <Corner className={`-top-[1.5px] -left-[1.5px] ${themeText}`} />
+          <Corner className={`-top-[1.5px] -right-[1.5px] ${themeText}`} />
+          <Corner className={`-bottom-[1.5px] -left-[1.5px] ${themeText}`} />
+          <Corner className={`-bottom-[1.5px] -right-[1.5px] ${themeText}`} />
 
           {/* Column 1/2 divider intersections */}
-          <Corner className={`top-[-1.5px] left-[calc(33.333%-1.5px)] ${themeText}`} />
-          <Corner className={`bottom-[-1.5px] left-[calc(33.333%-1.5px)] ${themeText}`} />
+          <Corner className={`-top-[1.5px] left-[calc(33.333%-1.5px)] ${themeText}`} />
+          <Corner className={`-bottom-[1.5px] left-[calc(33.333%-1.5px)] ${themeText}`} />
 
           {/* Column 2/3 divider intersections */}
-          <Corner className={`top-[-1.5px] left-[calc(66.666%-1.5px)] ${themeText}`} />
-          <Corner className={`bottom-[-1.5px] left-[calc(66.666%-1.5px)] ${themeText}`} />
+          <Corner className={`-top-[1.5px] left-[calc(66.666%-1.5px)] ${themeText}`} />
+          <Corner className={`-bottom-[1.5px] left-[calc(66.666%-1.5px)] ${themeText}`} />
 
           {/* Column 1: Links */}
           <div className={`border-r flex gap-2 items-center p-2 transition-colors duration-300 ${themeBorder}`}>
@@ -89,10 +89,10 @@ export default function Nav() {
           className={`relative w-full grid grid-cols-1 md:hidden border font-sans bg-transparent text-[22px] transition-colors duration-300 ${themeBorder} ${themeText}`}
         >
           {/* 4 Outer Corners */}
-          <Corner className="top-[-1.5px] left-[-1.5px]" />
-          <Corner className="top-[-1.5px] right-[-1.5px]" />
-          <Corner className="bottom-[-1.5px] left-[-1.5px]" />
-          <Corner className="bottom-[-1.5px] right-[-1.5px]" />
+          <Corner className="-top-[1.5px] -left-[1.5px]" />
+          <Corner className="-top-[1.5px] -right-[1.5px]" />
+          <Corner className="-bottom-[1.5px] -left-[1.5px]" />
+          <Corner className="-bottom-[1.5px] -right-[1.5px]" />
 
           {/* Links row */}
           <div className="flex gap-2 items-center p-2 transition-colors duration-300">
