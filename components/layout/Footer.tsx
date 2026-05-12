@@ -21,9 +21,7 @@ export default function Footer() {
               <br />
               Let’s get in touch and chat.
               <br />
-              <div className="opacity-80">
-
-
+              <span className="opacity-80 block mt-2">
               Or reach out directly to{" "}
               <a
                 href="mailto:albart2022@gmail.com"
@@ -31,7 +29,7 @@ export default function Footer() {
               >
                 hi@prappo.com
               </a>
-              </div>
+              </span>
             </p>
           </div>
 

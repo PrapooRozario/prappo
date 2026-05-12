@@ -40,14 +40,7 @@ export function CertRow({ cert }: CertProps) {
       // Text color changes
       .to(textContainerRef.current, { color: "#ffffff", duration: 0.4 }, 0)
       .to(yearRef.current, { color: "rgba(255,255,255,0.5)", duration: 0.4 }, 0)
-      .to(issuerRef.current, { color: "rgba(255,255,255,0.7)", duration: 0.4 }, 0)
-      // Animate arrow button
-      .to(iconRef.current, { 
-        rotation: -45, 
-        backgroundColor: "#ffffff", 
-        color: "#000000", 
-        borderColor: "rgba(255,255,255,0.4)" 
-      }, 0);
+      .to(issuerRef.current, { color: "rgba(255,255,255,0.7)", duration: 0.4 }, 0);
 
     const el = containerRef.current;
     if (!el) return;
