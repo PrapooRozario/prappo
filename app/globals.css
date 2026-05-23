@@ -14,6 +14,16 @@
 @theme {
   --font-sans: "Neue Montreal", Arial, Helvetica, sans-serif;
   --font-mono: "IBM Plex Mono", Courier, monospace;
+  --animate-shimmer: shimmer 1.5s infinite linear;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 html,
@@ -35,4 +45,17 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+/* Hide scrollbars globally */
+::-webkit-scrollbar {
+  display: none;
+}
+* {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }

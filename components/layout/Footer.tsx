@@ -1,9 +1,22 @@
 import Link from "next/link";
-import { Corner } from "@/components/ui";
-import { navLinks } from "@/data/nav-links";
-import { socialLinks } from "@/data/social-links";
 
-export default function Footer() {
+import { Corner } from "@/components/ui";
+import { getNavLinks } from "@/lib/data/nav-links";
+import { getSiteContent } from "@/lib/data/site-content";
+import { getSocialLinks } from "@/lib/data/social-links";
+
+export default async function Footer() {
+  const [navLinks, socialLinks, siteContent] = await Promise.all([
+    getNavLinks(),
+    getSocialLinks(),
+    getSiteContent(),
+  ]);
+
+  const contactEmail = siteContent.cta_email ?? "hi@prappo.com";
+  const aboutText =
+    siteContent.about_footer ??
+    "Prappo is a MERN stack developer focusing on creative digital products and full-stack experiences, located in Dhaka, Bangladesh.";
+
   return (
     <footer className="w-full bg-black text-white mt-16 md:mt-24">
       <div className="w-full px-[20px] py-[20px]">
@@ -22,13 +35,13 @@ export default function Footer() {
               Let’s get in touch and chat.
               <br />
               <span className="opacity-80 block mt-2">
-              Or reach out directly to{" "}
-              <a
-                href="mailto:albart2022@gmail.com"
-                className="hover:!underline hover:!decoration-white decoration-1 underline-offset-2"
-              >
-                hi@prappo.com
-              </a>
+                Or reach out directly to{" "}
+                <a
+                  href={`mailto:${contactEmail}`}
+                  className="hover:!underline hover:!decoration-white decoration-1 underline-offset-2"
+                >
+                  {contactEmail}
+                </a>
               </span>
             </p>
           </div>
@@ -46,25 +59,53 @@ export default function Footer() {
             <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/20">
               {/* /CONTENT */}
               <div className="px-[20px] py-[16px]">
-                <div className="font-mono uppercase text-[12px] tracking-[0.14em] text-white/70 mb-3">/ Content</div>
+                <div className="font-mono uppercase text-[12px] tracking-[0.14em] text-white/70 mb-3">
+                  / Content
+                </div>
                 <ul className="space-y-1 text-[20px]" aria-label="Site links">
-                  {navLinks.map(({ label, href }) => (
-                    <li key={href}>
-                      <Link href={href} className="hover:!underline hover:!decoration-white underline-offset-2">{label}</Link>
+                  {navLinks.map(({ id, label, href }) => (
+                    <li key={id}>
+                      <Link
+                        href={href}
+                        className="hover:!underline hover:!decoration-white underline-offset-2"
+                      >
+                        {label}
+                      </Link>
                     </li>
                   ))}
-                  <li><Link href="#" className="hover:!underline hover:!decoration-white underline-offset-2">Privacy</Link></li>
-                  <li><Link href="#" className="hover:!underline hover:!decoration-white underline-offset-2">Legal notice</Link></li>
+                  <li>
+                    <Link
+                      href="#"
+                      className="hover:!underline hover:!decoration-white underline-offset-2"
+                    >
+                      Privacy
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="#"
+                      className="hover:!underline hover:!decoration-white underline-offset-2"
+                    >
+                      Legal notice
+                    </Link>
+                  </li>
                 </ul>
               </div>
 
               {/* /SOCIAL */}
               <div className="px-[20px] py-[16px]">
-                <div className="font-mono uppercase text-[12px] tracking-[0.14em] text-white/70 mb-3">/ Social</div>
+                <div className="font-mono uppercase text-[12px] tracking-[0.14em] text-white/70 mb-3">
+                  / Social
+                </div>
                 <ul className="space-y-1 text-[20px]" aria-label="Social links">
-                  {socialLinks.map(({ label, href }) => (
-                    <li key={label}>
-                      <a href={href} className="hover:!underline hover:!decoration-white underline-offset-2">{label}</a>
+                  {socialLinks.map(({ id, label, href }) => (
+                    <li key={id}>
+                      <a
+                        href={href}
+                        className="hover:!underline hover:!decoration-white underline-offset-2"
+                      >
+                        {label}
+                      </a>
                     </li>
                   ))}
                 </ul>
@@ -72,10 +113,10 @@ export default function Footer() {
 
               {/* /ABOUT */}
               <div className="px-[20px] py-[16px]">
-                <div className="font-mono uppercase text-[12px] tracking-[0.14em] text-white/70 mb-3">/ About</div>
-                <p className="text-[20px] leading-[1.25] text-white/85">
-                  Prappo is a MERN stack developer focusing on creative digital products and full-stack experiences, located in Dhaka, Bangladesh.
-                </p>
+                <div className="font-mono uppercase text-[12px] tracking-[0.14em] text-white/70 mb-3">
+                  / About
+                </div>
+                <p className="text-[20px] leading-[1.25] text-white/85">{aboutText}</p>
               </div>
             </div>
           </div>

@@ -1,15 +1,16 @@
 "use client";
 
+import Image from "next/image";
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 interface CertProps {
   cert: {
-    year: string;
+    year: number;
     title: string;
     issuer: string;
-    image: string;
+    image: string | null;
   };
 }
 
@@ -21,7 +22,6 @@ export function CertRow({ cert }: CertProps) {
   const textContainerRef = useRef<HTMLDivElement>(null);
   const yearRef = useRef<HTMLSpanElement>(null);
   const issuerRef = useRef<HTMLSpanElement>(null);
-  const iconRef = useRef<HTMLDivElement>(null);
 
   const tl = useRef<gsap.core.Timeline | null>(null);
 
@@ -68,17 +68,21 @@ export function CertRow({ cert }: CertProps) {
       </div>
 
       {/* Floating Image */}
-      <div 
-        ref={imgWrapperRef}
-        className="absolute hidden md:block right-[15%] lg:right-[25%] top-1/2 -translate-y-1/2 w-[260px] aspect-[4/3] pointer-events-none z-20 shadow-2xl border border-white/20"
-      >
-        <img 
-          ref={imgRef}
-          src={cert.image} 
-          alt={cert.title}
-          className="w-full h-full object-cover"
-        />
-      </div>
+      {cert.image && (
+        <div 
+          ref={imgWrapperRef}
+          className="absolute hidden md:block right-[15%] lg:right-[25%] top-1/2 -translate-y-1/2 w-65 aspect-4/3 pointer-events-none z-20 shadow-2xl border border-white/20"
+        >
+          <Image
+            ref={imgRef}
+            src={cert.image}
+            alt={cert.title}
+            fill
+            className="w-full h-full object-cover"
+            sizes="260px"
+          />
+        </div>
+      )}
 
       {/* Content */}
       <div 

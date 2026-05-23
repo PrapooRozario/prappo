@@ -1,8 +1,11 @@
 import React from "react";
-import { Corner } from "@/components/ui";
-import { techCategories } from "@/data/tech-stack";
 
-export default function TechStack() {
+import { Corner } from "@/components/ui";
+import { getTechStack } from "@/lib/data/tech-stack";
+
+export default async function TechStack() {
+  const techCategories = await getTechStack();
+
   return (
     <section
       aria-labelledby="tech-stack-heading"
@@ -35,7 +38,7 @@ export default function TechStack() {
             {/* ID Column */}
             <div className="p-5 md:p-8 md:border-r border-black/20 group-hover:border-white/20 flex items-center transition-colors duration-500">
               <span className="font-mono text-[13px] md:text-[14px] text-black/40 group-hover:text-white/50 transition-colors duration-500">
-                / {category.id}
+                / {category.display_id}
               </span>
             </div>
 

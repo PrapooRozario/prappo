@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Corner } from "@/components/ui/Corner";
 
 export default function NotFound() {

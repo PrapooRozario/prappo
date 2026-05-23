@@ -5,7 +5,13 @@ interface HeroProps {
   year?: string;
 }
 
-export default function Hero({ label = "WORK", year = `${new Date().getFullYear()}` }: HeroProps) {
+async function getDisplayYear(): Promise<string> {
+  "use cache";
+  return `${new Date().getFullYear()}`;
+}
+
+export default async function Hero({ label = "WORK", year }: HeroProps) {
+  const resolvedYear = year ?? (await getDisplayYear());
   return (
     <header className="w-full">
       <h1 className="font-mono font-medium flex justify-between items-center text-[72px] md:text-[224px] whitespace-nowrap leading-none tracking-[-0.06em]">
@@ -19,7 +25,7 @@ export default function Hero({ label = "WORK", year = `${new Date().getFullYear(
           priority
           className="mx-2 md:mx-4 w-[40px] md:w-[140px] h-[40px] md:h-[140px] inline-block align-middle"
         />
-        <span>{year}</span>
+        <span>{resolvedYear}</span>
       </h1>
     </header>
   );
