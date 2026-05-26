@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Certificate } from "@/lib/data/certificates";
 import { createCertificate, updateCertificate, deleteCertificate, uploadImage } from "@/lib/api";
 import { useRouter } from "next/navigation";
+import { showToast } from "@/components/ui";
 
 export default function CertificatesClient({ initialCerts }: { initialCerts: Certificate[] }) {
   const router = useRouter();
@@ -11,6 +12,10 @@ export default function CertificatesClient({ initialCerts }: { initialCerts: Cer
   const [editingId, setEditingId] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    setCerts(initialCerts);
+  }, [initialCerts]);
 
   const [formData, setFormData] = useState<Partial<Certificate>>({
     title: "", issuer: "", year: new Date().getFullYear(), credential_url: "", order_index: 0, image: null
@@ -32,9 +37,10 @@ export default function CertificatesClient({ initialCerts }: { initialCerts: Cer
     try {
       await deleteCertificate(id);
       setCerts(certs.filter(c => c.id !== id));
+      showToast("Certificate deleted");
       router.refresh();
     } catch (err: any) {
-      alert(err.message);
+      showToast(err.message, "error");
     }
   };
 
@@ -44,8 +50,9 @@ export default function CertificatesClient({ initialCerts }: { initialCerts: Cer
       setLoading(true);
       const res = await uploadImage(e.target.files[0], "certificates");
       setFormData({ ...formData, image: res.data.publicUrl });
+      showToast("Image uploaded");
     } catch (err: any) {
-      alert("Image upload failed: " + err.message);
+      showToast("Image upload failed: " + err.message, "error");
     } finally {
       setLoading(false);
     }
@@ -56,15 +63,19 @@ export default function CertificatesClient({ initialCerts }: { initialCerts: Cer
     setLoading(true);
     setError(null);
     try {
-      if (editingId) {
-        await updateCertificate(editingId, formData as Record<string, unknown>);
-      } else {
-        await createCertificate(formData as Record<string, unknown>);
-      }
+    const payload = { ...formData, year: String(formData.year) };
+    if (editingId) {
+      await updateCertificate(editingId, payload as Record<string, unknown>);
+      showToast("Certificate updated");
+    } else {
+      await createCertificate(payload as Record<string, unknown>);
+      showToast("Certificate created");
+    }
+      handleCancel();
       router.refresh();
-      window.location.reload();
     } catch (err: any) {
       setError(err.message);
+      showToast(err.message, "error");
       setLoading(false);
     }
   };

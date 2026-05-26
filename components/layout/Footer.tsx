@@ -29,7 +29,7 @@ export default async function Footer() {
 
           {/* Hero CTA */}
           <div className="px-[20px] pt-[40px] md:pt-[64px] pb-[300px] max-w-5xl leading-[1.05]">
-            <p className="text-[28px] md:text-[44px] lg:text-[56px]">
+            <p className="text-[24px] sm:text-[28px] md:text-[44px] lg:text-[56px]">
               Wanna work together?
               <br />
               Let’s get in touch and chat.
@@ -38,7 +38,7 @@ export default async function Footer() {
                 Or reach out directly to{" "}
                 <a
                   href={`mailto:${contactEmail}`}
-                  className="hover:!underline hover:!decoration-white decoration-1 underline-offset-2"
+                  className="inline-block break-all md:break-normal hover:!underline hover:!decoration-white decoration-1 underline-offset-2"
                 >
                   {contactEmail}
                 </a>

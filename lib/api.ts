@@ -119,7 +119,6 @@ export async function deleteProject(id: string) {
     method: "DELETE",
   });
   if (!res.ok) throw new Error("Failed to delete project");
-  return res.json();
 }
 
 // Project Images
@@ -154,7 +153,6 @@ export async function deleteProjectImage(id: string) {
     method: "DELETE",
   });
   if (!res.ok) throw new Error("Failed to delete project image");
-  return res.json();
 }
 
 // Certificates
@@ -183,7 +181,6 @@ export async function deleteCertificate(id: string) {
     method: "DELETE",
   });
   if (!res.ok) throw new Error("Failed to delete certificate");
-  return res.json();
 }
 
 // Tech Categories
@@ -212,7 +209,6 @@ export async function deleteTechCategory(id: string) {
     method: "DELETE",
   });
   if (!res.ok) throw new Error("Failed to delete tech category");
-  return res.json();
 }
 
 // Tech Items
@@ -241,7 +237,6 @@ export async function deleteTechItem(id: string) {
     method: "DELETE",
   });
   if (!res.ok) throw new Error("Failed to delete tech item");
-  return res.json();
 }
 
 // Site Content
@@ -260,7 +255,90 @@ export async function deleteSiteContent(key: string) {
     method: "DELETE",
   });
   if (!res.ok) throw new Error("Failed to delete site content");
+}
+
+// Nav Links
+export async function createNavLink(data: ApiMutationPayload) {
+  const res = await apiFetchClient("/nav-links", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  if (!res.ok) throw new Error("Failed to create nav link");
   return res.json();
+}
+
+export async function updateNavLink(id: string, data: ApiMutationPayload) {
+  const res = await apiFetchClient(`/nav-links/${id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  if (!res.ok) throw new Error("Failed to update nav link");
+  return res.json();
+}
+
+export async function deleteNavLink(id: string) {
+  const res = await apiFetchClient(`/nav-links/${id}`, {
+    method: "DELETE",
+  });
+  if (!res.ok) throw new Error("Failed to delete nav link");
+}
+
+// Social Links
+export async function createSocialLink(data: ApiMutationPayload) {
+  const res = await apiFetchClient("/social-links", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  if (!res.ok) throw new Error("Failed to create social link");
+  return res.json();
+}
+
+export async function updateSocialLink(id: string, data: ApiMutationPayload) {
+  const res = await apiFetchClient(`/social-links/${id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  if (!res.ok) throw new Error("Failed to update social link");
+  return res.json();
+}
+
+export async function deleteSocialLink(id: string) {
+  const res = await apiFetchClient(`/social-links/${id}`, {
+    method: "DELETE",
+  });
+  if (!res.ok) throw new Error("Failed to delete social link");
+}
+
+// Expertise
+export async function createExpertise(data: ApiMutationPayload) {
+  const res = await apiFetchClient("/expertise", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  if (!res.ok) throw new Error("Failed to create expertise");
+  return res.json();
+}
+
+export async function updateExpertise(id: string, data: ApiMutationPayload) {
+  const res = await apiFetchClient(`/expertise/${id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  if (!res.ok) throw new Error("Failed to update expertise");
+  return res.json();
+}
+
+export async function deleteExpertise(id: string) {
+  const res = await apiFetchClient(`/expertise/${id}`, {
+    method: "DELETE",
+  });
+  if (!res.ok) throw new Error("Failed to delete expertise");
 }
 
 export async function deleteUpload(path: string) {
@@ -268,5 +346,5 @@ export async function deleteUpload(path: string) {
     method: "DELETE",
   });
   if (!res.ok) throw new Error("Failed to delete upload");
-  return res.json();
 }
+

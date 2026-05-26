@@ -1,4 +1,5 @@
 import "@/app/globals.css";
+import { Toast } from "@/components/ui";
 
 export const metadata = {
   title: 'Admin Login',
@@ -14,6 +15,7 @@ export default function AdminLayout({
     <html lang="en" suppressHydrationWarning>
       <body className="font-sans antialiased bg-white text-black" suppressHydrationWarning>
         {children}
+        <Toast />
       </body>
     </html>
   )

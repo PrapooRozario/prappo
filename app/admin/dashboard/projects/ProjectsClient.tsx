@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Project } from "@/lib/data/projects";
 import { createProject, updateProject, deleteProject, uploadImage } from "@/lib/api";
 import { useRouter } from "next/navigation";
+import { showToast } from "@/components/ui";
 
 export default function ProjectsClient({ initialProjects }: { initialProjects: Project[] }) {
   const router = useRouter();
@@ -11,6 +12,10 @@ export default function ProjectsClient({ initialProjects }: { initialProjects: P
   const [editingId, setEditingId] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    setProjects(initialProjects);
+  }, [initialProjects]);
 
   const [formData, setFormData] = useState<Partial<Project>>({
     title: "", slug: "", number: "", category: "", year: new Date().getFullYear(), description: "", url: "", order_index: 0, image: null
@@ -32,9 +37,10 @@ export default function ProjectsClient({ initialProjects }: { initialProjects: P
     try {
       await deleteProject(id);
       setProjects(projects.filter(p => p.id !== id));
+      showToast("Project deleted successfully");
       router.refresh();
     } catch (err: any) {
-      alert(err.message);
+      showToast(err.message, "error");
     }
   };
 
@@ -44,8 +50,9 @@ export default function ProjectsClient({ initialProjects }: { initialProjects: P
       setLoading(true);
       const res = await uploadImage(e.target.files[0], "projects");
       setFormData({ ...formData, image: res.data.publicUrl });
+      showToast("Image uploaded");
     } catch (err: any) {
-      alert("Image upload failed: " + err.message);
+      showToast("Image upload failed: " + err.message, "error");
     } finally {
       setLoading(false);
     }
@@ -58,14 +65,17 @@ export default function ProjectsClient({ initialProjects }: { initialProjects: P
     try {
       if (editingId) {
         await updateProject(editingId, formData as Record<string, unknown>);
+        showToast("Project updated successfully");
       } else {
         await createProject(formData as Record<string, unknown>);
+        showToast("Project created successfully");
       }
       // Optimistic or refresh
+      handleCancel();
       router.refresh();
-      window.location.reload(); // Simple sync
     } catch (err: any) {
       setError(err.message);
+      showToast(err.message, "error");
       setLoading(false);
     }
   };

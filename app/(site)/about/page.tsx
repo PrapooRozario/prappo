@@ -13,16 +13,6 @@ export const metadata = {
     "Learn more about Prappo Rozario, a MERN stack developer from Dhaka, Bangladesh.",
 };
 
-const FALLBACK_INTRO_LINES = [
-  "Bridging the gap",
-  "between robust",
-  "engineering &",
-  "refined design.",
-];
-
-const FALLBACK_PHILOSOPHY =
-  "My approach is rooted in systemizing chaos. Code should be scalable and invisible, while the interface must feel deeply intuitive and meticulously crafted.";
-
 export default async function AboutPage() {
   const [certificates, expertise, siteContent] = await Promise.all([
     getCertificates(),
@@ -30,16 +20,16 @@ export default async function AboutPage() {
     getSiteContent(),
   ]);
 
-  const introLines = (siteContent.introduction ?? FALLBACK_INTRO_LINES.join(" "))
+  const introLines = (siteContent.introduction)
     .split(/(?<=\.|&)\s+/)
     .filter(Boolean);
-  const introToRender = introLines.length > 1 ? introLines : FALLBACK_INTRO_LINES;
+  const introToRender = introLines.length > 1 ? introLines : introLines
 
-  const philosophy = siteContent.philosophy ?? FALLBACK_PHILOSOPHY;
-  const locationLabel = siteContent.location_label ?? "Dhaka, Bangladesh.";
-  const availability = siteContent.availability ?? "Available for freelance";
-  const lat = Number(siteContent.location_lat ?? "23.7806");
-  const lng = Number(siteContent.location_lng ?? "90.4193");
+  const philosophy = siteContent.philosophy
+  const locationLabel = siteContent.location_label;
+  const availability = siteContent.availability;
+  const lat = Number(siteContent.location_lat);
+  const lng = Number(siteContent.location_lng);
   const [locationLine1, locationLine2] = locationLabel.split(",").map((part) => part.trim());
 
   return (
@@ -57,7 +47,7 @@ export default async function AboutPage() {
             / Introduction
           </div>
 
-          <h1 className="font-sans text-[48px] md:text-[72px] lg:text-[88px] leading-[0.9] tracking-[-0.04em] text-black uppercase">
+          <h1 className="font-sans text-[36px] sm:text-[48px] md:text-[72px] lg:text-[88px] leading-[0.9] tracking-[-0.04em] text-black uppercase">
             {introToRender.map((line, i) => (
               <span key={i}>
                 {line}
@@ -165,7 +155,7 @@ export default async function AboutPage() {
         {/* Block 6: Certificates Timeline (Spans 3 cols) */}
         <div className="md:col-span-3 flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <h2
-            className="font-sans text-[64px] md:text-[140px] leading-[0.8] tracking-tighter font-medium text-black"
+            className="font-sans text-[44px] sm:text-[64px] md:text-[120px] lg:text-[140px] leading-[0.8] tracking-tighter font-medium text-black"
           >
             VERIFIED<br />LEARNING
           </h2>

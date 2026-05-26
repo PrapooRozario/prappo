@@ -1,14 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { updateSiteContent, deleteSiteContent } from "@/lib/api";
 import { useRouter } from "next/navigation";
+import { showToast } from "@/components/ui";
 
 export default function ContentClient({ initialContent }: { initialContent: Record<string, string> }) {
   const router = useRouter();
   const [content, setContent] = useState<Record<string, string>>(initialContent);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    setContent(initialContent);
+  }, [initialContent]);
 
   const [editingKey, setEditingKey] = useState<string | null>(null);
   const [formData, setFormData] = useState({ key: "", value: "" });
@@ -25,9 +30,10 @@ export default function ContentClient({ initialContent }: { initialContent: Reco
       const newContent = { ...content };
       delete newContent[key];
       setContent(newContent);
+      showToast("Content block deleted");
       router.refresh();
     } catch (err: any) {
-      alert(err.message);
+      showToast(err.message, "error");
     }
   };
 
@@ -37,10 +43,14 @@ export default function ContentClient({ initialContent }: { initialContent: Reco
     try {
       // The API takes PUT /site-content/:key with { value: string }
       await updateSiteContent(formData.key, { value: formData.value });
+      showToast("Content block saved");
+      setEditingKey(null);
+      setFormData({ key: "", value: "" });
+      setLoading(false);
       router.refresh();
-      window.location.reload();
     } catch (err: any) {
       setError(err.message);
+      showToast(err.message, "error");
       setLoading(false);
     }
   };

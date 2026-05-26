@@ -10,8 +10,8 @@ export const linkPillVariants = cva(
   {
     variants: {
       size: {
-        md: "text-[22px]",
-        lg: "text-[28px]",
+        md: "text-[16px] sm:text-[20px] md:text-[22px]",
+        lg: "text-[20px] lg:text-[28px]",
       },
       intent: {
         active: "border-black bg-black text-white",

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
@@ -28,17 +28,20 @@ export default function NavClient({ navLinks, contactEmail = "hi@prappo.com" }: 
 
   const renderLinks = (size: "md" | "lg") => navLinks.map(({ label, href }) => {
     const isActive = pathname === href;
+    const currentNavLinkText = isActive
+      ? "block text-white transition-colors duration-300"
+      : "block text-black group-hover:text-white transition-colors duration-300";
 
     return (
       <Link
         key={href}
         href={href}
         aria-current={isActive ? "page" : undefined}
-        className={linkPillVariants({ size, intent: "inactive" }) + " group"}
+        className={linkPillVariants({ size, intent: isActive ? "active" : "inactive" }) + " group"}
       >
         <HoverSlideText
           label={label}
-          textClassName={navLinkText}
+          textClassName={currentNavLinkText}
           hiddenClassName={navLinkHiddenText}
         />
       </Link>
@@ -54,7 +57,7 @@ export default function NavClient({ navLinks, contactEmail = "hi@prappo.com" }: 
       <div className="w-full px-[20px] pt-[20px]">
         {/* Desktop */}
         <div
-          className={`relative w-full hidden md:grid md:grid-cols-3 border ${themeBorder} font-sans bg-transparent text-[28px] transition-colors duration-300 h-[56px]`}
+          className={`relative w-full hidden lg:grid lg:grid-cols-3 border ${themeBorder} font-sans bg-transparent text-[20px] xl:text-[28px] transition-colors duration-300 h-[56px]`}
         >
           {/* 4 Outer Corners */}
           <Corner className={`-top-[1.5px] -left-[1.5px] ${themeText}`} />
@@ -76,17 +79,17 @@ export default function NavClient({ navLinks, contactEmail = "hi@prappo.com" }: 
           </div>
 
           {/* Column 2: Name */}
-          <div className={`border-r flex items-center px-2 ${themeBorder}`}>
-            <span className={`block text-[28px] ${themeText}`}>
+          <div className={`border-r flex items-center px-2 ${themeBorder} overflow-hidden whitespace-nowrap`}>
+            <span className={`block text-[20px] xl:text-[28px] truncate ${themeText}`}>
               Prappo Rozario
             </span>
           </div>
 
           {/* Column 3: Email */}
-          <div className={`flex items-center px-2 ${themeText}`}>
+          <div className={`flex items-center px-2 ${themeText} overflow-hidden whitespace-nowrap`}>
             <a
               href={`mailto:${contactEmail}`}
-              className="block text-[28px] hover:underline"
+              className="block text-[20px] xl:text-[28px] hover:underline truncate"
             >
               {contactEmail}
             </a>
@@ -95,7 +98,7 @@ export default function NavClient({ navLinks, contactEmail = "hi@prappo.com" }: 
 
         {/* Mobile */}
         <div
-          className={`relative w-full grid grid-cols-1 md:hidden border font-sans bg-transparent text-[22px] transition-colors duration-300 ${themeBorder} ${themeText}`}
+          className={`relative w-full grid grid-cols-1 lg:hidden border font-sans bg-transparent text-[22px] transition-colors duration-300 ${themeBorder} ${themeText}`}
         >
           {/* 4 Outer Corners */}
           <Corner className="-top-[1.5px] -left-[1.5px]" />
@@ -104,7 +107,7 @@ export default function NavClient({ navLinks, contactEmail = "hi@prappo.com" }: 
           <Corner className="-bottom-[1.5px] -right-[1.5px]" />
 
           {/* Links row */}
-          <div className="flex gap-2 items-center p-2 transition-colors duration-300">
+          <div className="flex gap-2 items-center p-2 transition-colors duration-300 overflow-x-auto scrollbar-none whitespace-nowrap">
             {renderLinks("md")}
           </div>
         </div>

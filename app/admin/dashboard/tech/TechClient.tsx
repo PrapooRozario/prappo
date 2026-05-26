@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { createTechCategory, updateTechCategory, deleteTechCategory, createTechItem, updateTechItem, deleteTechItem } from "@/lib/api";
 import { useRouter } from "next/navigation";
+import { showToast } from "@/components/ui";
 
 export default function TechClient({ initialCategories, initialItems }: { initialCategories: any[], initialItems: any[] }) {
   const router = useRouter();
@@ -10,6 +11,11 @@ export default function TechClient({ initialCategories, initialItems }: { initia
   const [items, setItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    setCategories(initialCategories);
+    setItems(initialItems);
+  }, [initialCategories, initialItems]);
 
   const [editingCategory, setEditingCategory] = useState<any>(null);
   const [catFormData, setCatFormData] = useState<any>({ display_id: "", title: "" });
@@ -22,32 +28,38 @@ export default function TechClient({ initialCategories, initialItems }: { initia
 
   const handleCatDelete = async (id: string) => {
     if (!confirm("Are you sure?")) return;
-    try { await deleteTechCategory(id); setCategories(categories.filter(c => c.id !== id)); router.refresh(); } catch (err: any) { alert(err.message); }
+    try { await deleteTechCategory(id); setCategories(categories.filter(c => c.id !== id)); showToast("Category deleted"); router.refresh(); } catch (err: any) { showToast(err.message, "error"); }
   };
 
   const handleItemDelete = async (id: string) => {
     if (!confirm("Are you sure?")) return;
-    try { await deleteTechItem(id); setItems(items.filter(i => i.id !== id)); router.refresh(); } catch (err: any) { alert(err.message); }
+    try { await deleteTechItem(id); setItems(items.filter(i => i.id !== id)); showToast("Item deleted"); router.refresh(); } catch (err: any) { showToast(err.message, "error"); }
   };
 
   const handleCatSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true); setError(null);
     try {
-      if (editingCategory) await updateTechCategory(editingCategory.id, catFormData);
-      else await createTechCategory(catFormData);
-      router.refresh(); window.location.reload();
-    } catch (err: any) { setError(err.message); setLoading(false); }
+      if (editingCategory) { await updateTechCategory(editingCategory.id, catFormData); showToast("Category updated"); }
+      else { await createTechCategory(catFormData); showToast("Category created"); }
+      setEditingCategory(null);
+      setCatFormData({display_id: "", title: ""});
+      setLoading(false);
+      router.refresh();
+    } catch (err: any) { setError(err.message); showToast(err.message, "error"); setLoading(false); }
   };
 
   const handleItemSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true); setError(null);
     try {
-      if (editingItem) await updateTechItem(editingItem.id, itemFormData);
-      else await createTechItem(itemFormData);
-      router.refresh(); window.location.reload();
-    } catch (err: any) { setError(err.message); setLoading(false); }
+      if (editingItem) { await updateTechItem(editingItem.id, itemFormData); showToast("Item updated"); }
+      else { await createTechItem(itemFormData); showToast("Item created"); }
+      setEditingItem(null);
+      setItemFormData({category_id: "", name: ""});
+      setLoading(false);
+      router.refresh();
+    } catch (err: any) { setError(err.message); showToast(err.message, "error"); setLoading(false); }
   };
 
   return (

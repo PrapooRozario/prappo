@@ -15,7 +15,7 @@ export default async function TechStack() {
         <div className="max-w-2xl">
           <h2
             id="tech-stack-heading"
-            className="font-sans text-[64px] md:text-[140px] leading-[0.8] tracking-tighter font-medium text-black"
+            className="font-sans text-[44px] sm:text-[64px] md:text-[120px] lg:text-[140px] leading-[0.8] tracking-tighter font-medium text-black"
           >
             TECH<br />STACK
           </h2>

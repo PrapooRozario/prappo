@@ -28,7 +28,7 @@ async function DashboardContent() {
             <h2 className="text-xl mb-2">Projects</h2>
             <p className="text-sm text-black/60 font-mono mb-4">Manage portfolio projects</p>
           </div>
-          <Link href="/admin/dashboard/projects" className="bg-black text-white px-4 py-2 font-mono text-sm uppercase text-center hover:bg-black/80 transition-colors">Manage</Link>
+          <Link href="/admin/dashboard/projects" className="bg-black !text-white px-4 py-2 font-mono text-sm uppercase text-center hover:bg-black/80 transition-colors">Manage</Link>
         </div>
         
         <div className="border border-black/20 p-6 flex flex-col justify-between">
@@ -36,7 +36,7 @@ async function DashboardContent() {
             <h2 className="text-xl mb-2">Certificates</h2>
             <p className="text-sm text-black/60 font-mono mb-4">Manage verified learning</p>
           </div>
-          <Link href="/admin/dashboard/certificates" className="bg-black text-white px-4 py-2 font-mono text-sm uppercase text-center hover:bg-black/80 transition-colors">Manage</Link>
+          <Link href="/admin/dashboard/certificates" className="bg-black !text-white px-4 py-2 font-mono text-sm uppercase text-center hover:bg-black/80 transition-colors">Manage</Link>
         </div>
 
         <div className="border border-black/20 p-6 flex flex-col justify-between">
@@ -44,7 +44,7 @@ async function DashboardContent() {
             <h2 className="text-xl mb-2">Tech Stack</h2>
             <p className="text-sm text-black/60 font-mono mb-4">Manage capabilities</p>
           </div>
-          <Link href="/admin/dashboard/tech" className="bg-black text-white px-4 py-2 font-mono text-sm uppercase text-center hover:bg-black/80 transition-colors">Manage</Link>
+          <Link href="/admin/dashboard/tech" className="bg-black !text-white px-4 py-2 font-mono text-sm uppercase text-center hover:bg-black/80 transition-colors">Manage</Link>
         </div>
 
         <div className="border border-black/20 p-6 flex flex-col justify-between">
@@ -52,7 +52,15 @@ async function DashboardContent() {
             <h2 className="text-xl mb-2">Content</h2>
             <p className="text-sm text-black/60 font-mono mb-4">Manage site text & links</p>
           </div>
-          <Link href="/admin/dashboard/content" className="bg-black text-white px-4 py-2 font-mono text-sm uppercase text-center hover:bg-black/80 transition-colors">Manage</Link>
+          <Link href="/admin/dashboard/content" className="bg-black !text-white px-4 py-2 font-mono text-sm uppercase text-center hover:bg-black/80 transition-colors">Manage</Link>
+        </div>
+
+        <div className="border border-black/20 p-6 flex flex-col justify-between">
+          <div>
+            <h2 className="text-xl mb-2">Site Config</h2>
+            <p className="text-sm text-black/60 font-mono mb-4">Nav, Social & Expertise</p>
+          </div>
+          <Link href="/admin/dashboard/config" className="bg-black !text-white px-4 py-2 font-mono text-sm uppercase text-center hover:bg-black/80 transition-colors">Manage</Link>
         </div>
       </div>
     </div>

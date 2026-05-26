@@ -30,14 +30,14 @@ function WorkCardImpl({ project }: WorkCardProps) {
 
       {/* Top Meta Bar */}
       <div className="relative grid grid-cols-[auto_1fr_auto] h-[48px] border-b border-black/20 bg-white z-20">
-        <div className="relative px-5 md:px-6 flex items-center border-r border-black/20 font-mono text-[11px] md:text-[12px] text-black/50 tracking-widest">
+        <div className="relative px-3 md:px-6 flex items-center border-r border-black/20 font-mono text-[10px] md:text-[12px] text-black/50 tracking-wider md:tracking-widest">
           {number}
           <Corner className="-bottom-[1.5px] -right-[1.5px]" />
         </div>
-        <div className="relative px-5 md:px-6 flex items-center font-mono text-[11px] md:text-[12px] text-black/50 uppercase tracking-widest">
+        <div className="relative px-3 md:px-6 flex items-center font-mono text-[10px] md:text-[12px] text-black/50 uppercase tracking-wider md:tracking-widest truncate">
           {category}
         </div>
-        <div className="relative px-5 md:px-6 flex items-center border-l border-black/20 font-mono text-[11px] md:text-[12px] text-black/50 tracking-widest">
+        <div className="relative px-3 md:px-6 flex items-center border-l border-black/20 font-mono text-[10px] md:text-[12px] text-black/50 tracking-wider md:tracking-widest">
           {year}
           <Corner className="-bottom-[1.5px] -left-[1.5px]" />
         </div>
@@ -54,7 +54,7 @@ function WorkCardImpl({ project }: WorkCardProps) {
                 src={image} 
                 alt={title}
                 fill
-                className="object-fit group-hover:scale-110 transition-transform duration-500 ease-out z-10"
+                className="object-cover group-hover:scale-110 transition-transform duration-500 ease-out z-10"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             ) : (
@@ -80,7 +80,7 @@ function WorkCardImpl({ project }: WorkCardProps) {
           <div className="flex flex-col">
             <h2
               id={`work-${project.id}-title`}
-              className="font-sans text-[36px] md:text-[44px] font-medium leading-[1.05] tracking-tighter transition-colors duration-500"
+              className="font-sans text-[30px] sm:text-[36px] md:text-[44px] font-medium leading-[1.05] tracking-tighter transition-colors duration-500"
             >
               {title.split(" ").map((word: string, i: number, arr: string[]) => (
                 <span key={`${word}-${i}`}>

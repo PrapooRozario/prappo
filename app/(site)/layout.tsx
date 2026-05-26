@@ -24,7 +24,7 @@ function NavFallback() {
     <nav className="fixed top-0 left-0 w-full z-50 bg-transparent pointer-events-none">
       <div className="w-full px-[20px] pt-[20px]">
         {/* Desktop */}
-        <div className="relative w-full hidden md:grid md:grid-cols-3 border border-black/10 h-[56px]">
+        <div className="relative w-full hidden lg:grid lg:grid-cols-3 border border-black/10 h-[56px]">
           <div className="border-r border-black/10 flex gap-2 items-center p-2">
             <Skeleton height="2.5rem" width="6rem" className="rounded-full" />
             <Skeleton height="2.5rem" width="6rem" className="rounded-full" />
@@ -39,7 +39,7 @@ function NavFallback() {
         </div>
 
         {/* Mobile */}
-        <div className="relative w-full grid grid-cols-1 md:hidden border border-black/10 min-h-[52px]">
+        <div className="relative w-full grid grid-cols-1 lg:hidden border border-black/10 min-h-[52px]">
           <div className="flex gap-2 items-center p-2">
             <Skeleton height="2rem" width="5rem" className="rounded-full" />
             <Skeleton height="2rem" width="5rem" className="rounded-full" />

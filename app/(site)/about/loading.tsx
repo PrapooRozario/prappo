@@ -18,9 +18,9 @@ export default function AboutLoading() {
           </div>
 
           <div>
-            <Skeleton width="90%" margin="0 0 16px 0" className="h-[48px] md:h-[72px] lg:h-[88px]" />
-            <Skeleton width="70%" margin="0 0 16px 0" className="h-[48px] md:h-[72px] lg:h-[88px]" />
-            <Skeleton width="80%" className="h-[48px] md:h-[72px] lg:h-[88px]" />
+            <Skeleton width="90%" margin="0 0 16px 0" className="h-[36px] sm:h-[48px] md:h-[72px] lg:h-[88px]" />
+            <Skeleton width="70%" margin="0 0 16px 0" className="h-[36px] sm:h-[48px] md:h-[72px] lg:h-[88px]" />
+            <Skeleton width="80%" className="h-[36px] sm:h-[48px] md:h-[72px] lg:h-[88px]" />
           </div>
         </div>
 
@@ -105,7 +105,7 @@ export default function AboutLoading() {
 
         {/* Block 6: Certificates Timeline (Spans 3 cols) */}
         <div className="md:col-span-3 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <h2 className="font-sans text-[64px] md:text-[140px] leading-[0.8] tracking-tighter font-medium text-black">
+          <h2 className="font-sans text-[44px] sm:text-[64px] md:text-[120px] lg:text-[140px] leading-[0.8] tracking-tighter font-medium text-black">
             VERIFIED<br />LEARNING
           </h2>
           <div className="font-mono text-[13px] uppercase tracking-[0.08em] text-black/50 md:text-[14px]">
