@@ -50,7 +50,7 @@ function TechStackFallback() {
 export default function Home() {
   return (
     <div className="pt-[120px] md:pt-[140px]">
-      <Hero label="WORK" />
+      <Hero label="WORK"/>
       <Suspense fallback={<WorkGridFallback />}>
         <WorkGrid />
       </Suspense>
